@@ -39,17 +39,17 @@
 
 Для запуска проекта будет необходима установка следующих библиотек:
 
-- python = 3.6
-- torch = 2.5
-- torchvision = 0.2
-- numpy
-- scipy
-- matplotlib
-- scikit-image
-- PIL
-- opencv-python
-- piqa
-- jupyter
+* Python = 3.6
+* PyTorch
+* torchvision
+* NumPy
+* SciPy
+* Matplotlib
+* scikit-image
+* Pillow
+* OpenCV
+* PIQA
+* Jupyter
 
 ### Подготовка данных
 
