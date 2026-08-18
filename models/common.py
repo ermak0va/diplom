@@ -72,34 +72,6 @@ class Swish(nn.Module):
     def forward(self, x):
         return x * self.s(x)
 
-class Myf(nn.Module):
-    def __init__(self):
-        super(Myf, self).__init__()
-        self.s = nn.Softplus(beta=2)
-
-    def forward(self, x):
-        #return x/(1 + torch.exp(-5*x))+x/(1 + torch.exp(x))*1/5
-        #return 0.2*x+0.8/2*torch.log(1+torch.exp(2*x))
-        return 0.2*x+0.4*self.s(x)
-
-class Myf2(nn.Module):
-    def __init__(self):
-        super(Myf2, self).__init__()
-        self.s = nn.Softplus(beta=5)
-
-    def forward(self, x):
-        #return x/(1 + torch.exp(-5*x))+x/(1 + torch.exp(x))*1/5
-        #return 0.2*x+0.8/2*torch.log(1+torch.exp(2*x))
-        return 0.2*x+0.16*self.s(x)
-
-class Myfs(nn.Module):
-    def __init__(self):
-        super(Myfs, self).__init__()
-        self.s = nn.Softplus(beta=10)
-
-    def forward(self, x):
-        return self.s(x)*0.8+0.2
-
         
 class Soft(nn.Module):
     def __init__(self):
@@ -116,12 +88,10 @@ def act(act_fun = 'LeakyReLU'):
     if isinstance(act_fun, str):
         if act_fun == 'LeakyReLU':
             return nn.LeakyReLU(0.2, inplace=True)
-        elif act_fun == 'Myf':
-            return Myf()
-        elif act_fun == 'Myfs':
-            return Myfs()
         elif act_fun == 'Soft':
             return Soft()
+        elif act_fun == 'Swish':
+            return Swish()
         elif act_fun == 'none':
             return nn.Sequential()
         else:
@@ -131,7 +101,7 @@ def act(act_fun = 'LeakyReLU'):
 
 
 def bn(num_features):
-    return nn.BatchNorm2d(num_features)#,affine=True, track_running_stats=False)
+    return nn.BatchNorm2d(num_features)
     
 def inn(num_features,affine):
     return nn.InstanceNorm2d(num_features,affine=affine)

@@ -12,7 +12,7 @@ def skip(
     """Assembles encoder-decoder with skip connections.
 
     Arguments:
-        act_fun: Either string 'LeakyReLU|Swish|ELU|none' or module (e.g. nn.ReLU)
+        act_fun: Either string 'LeakyReLU|Swish|Soft|none' or module (e.g. nn.ReLU)
         pad (string): zero|reflection (default: 'zero')
         upsample_mode (string): 'nearest|bilinear' (default: 'nearest')
         downsample_mode (string): 'stride|avg|max|lanczos2' (default: 'stride')
